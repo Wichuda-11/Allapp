@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467558947850",
+    "project_id": "jeepfood-31937",
+    "storage_bucket": "jeepfood-31937.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467558947850:android:53d97d3e588e53534493f3",
+        "android_client_info": {
+          "package_name": "com.jeepfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467558947850-83vc8e5l15o078ip9lt12cm2gk5o93gs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDX-nyGkac4aTIce9pmxG7YqJeWk-u4lA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467558947850-83vc8e5l15o078ip9lt12cm2gk5o93gs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
