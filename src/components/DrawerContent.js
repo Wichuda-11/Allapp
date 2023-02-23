@@ -153,7 +153,7 @@ export default function DrawerContent(props){
           <DrawerItem
             label="Settings"
             icon={({color, size}) => (
-              <Ionicons name="cog-outline" color={color} size={30} />
+              <Ionicons name="settings-sharp" color={color} size={26} />
             )}
           />
 
@@ -192,7 +192,6 @@ export default function DrawerContent(props){
             />
           )}
         />
-
       </View>
     );
     

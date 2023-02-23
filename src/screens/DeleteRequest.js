@@ -5,6 +5,7 @@ import {
   ScrollView,
   Image,
   Platform,
+  TextInput,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
@@ -54,90 +55,81 @@ const baseUrl = 'http://172.16.156.225:3000';
 //console.log(response.data);
 //});
 
-function User({userObject}) {
-  return (
-    <View style={{alignItems: 'center'}}>
-      <Image
-        source={{uri: userObject.avatar}}
-        style={{
-          width: 128,
-          height: 128,
-          borderRadius: 64,
-          marginBottom: 10,
-        }}
-      />
-      <Text
-        style={
-          styles.text1
-        }>{`ID: ${userObject.id} ${userObject.first_name} ${userObject.last_name}`}</Text>
-    </View>
-  );
-}
-
-export default function MyAccount({navigation}) {
-  const [userId, setUserId] = useState(1);
-  const [user, setUser] = useState(null);
+export default function DeleteRequest({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setErrorFlag] = useState(false);
+  const [userId, setUserId] = useState(null);
 
-  const changeUserIdHandler = () => {
-    setUserId(userId => (userId === 10 ? 1 : userId + 1));
+  const onChangeIdHandler = id => {
+    setUserId(id);
   };
 
-  useEffect(() => {
-    const source = axios.CancelToken.source();
-    const url = `${baseUrl}/users/${userId}`;
-    //const url = `${baseUrl}/users`;
-    const fetchUsers = async () => {
-      const response = await axios.get(url, {cancelToken: source.token});
-      try {
-        setIsLoading(true);
-        //const response = await axios.get(url, { cancelToken: source.token });
+  const onSubmitFormHandler = async event => {
+    if (!userId.trim()) {
+      alert('UserId is invalid');
+      return;
+    }
+    setIsLoading(true);
 
-        if (response.status === 200) {
-          setUser(response.data.data);
-          setIsLoading(false);
-          return;
-        } else {
-          throw new Error('Failed to fetch users');
-        }
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log('Data fetching cancelled');
-        } else {
-          setErrorFlag(true);
-          setIsLoading(false);
-        }
+    try {
+      const response = await axios.delete(`${baseUrl}/users/${userId}`);
+      if (response.status === 204) {
+        alert(`You have deleted: ${JSON.stringify(response.data)}`);
+        setIsLoading(false);
+        setUserId(null);
+      } else {
+        throw new Error('Failed to delete resource');
       }
-    };
-    fetchUsers();
-    return () => source.cancel('Data fetching cancelled');
-  }, [userId]);
+    } catch (error) {
+      alert('Failed to delete resource');
+      setIsLoading(false);
+    }
+  };
 
-  
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View>
-        <Text style={styles.text1}> Get Request</Text>
-      </View>
-
-      <View style={styles.wrapperStyle}>
-        {!isLoading && !hasError && user && <User userObject={user} />}
-      </View>
-      <View style={styles.wrapperStyle}>
-        {isLoading && <Text>Loading...</Text>}
-        {!isLoading && hasError && <Text>An error has occurred</Text>}
-      </View>
-      <View>
-        <View style={styles.buttonStyle}>
-          <Button
-            title="Load user"
-            onPress={changeUserIdHandler}
-            disabled={isLoading}
-            buttonStyle={styles.styledButton2}
-            titleStyle={styles.buttontitle}
+      <View style={styles.view3}>
+        <View style={styles.view2}>
+          <Ionicons
+            name="arrow-back"
+            color={colors.black}
+            size={30}
+            onPress={() => navigation.goBack()}
           />
         </View>
+      </View>
+
+      <View>
+        <Text style={styles.text1}> Delete Request</Text>
+      </View>
+
+      <View>
+        <View style={styles.wrapper}>
+          {isLoading ? (
+            <Text> Deleting resource </Text>
+          ) : (
+            <Text> Deleted user </Text>
+          )}
+        </View>
+        <View style={styles.wrapper}>
+          <TextInput
+            placeholder="User ID"
+            placeholderTextColor="#333"
+            value={userId}
+            editable={!isLoading}
+            onChangeText={onChangeIdHandler}
+            style={styles.input}
+          />
+        </View>
+      </View>
+
+      <View style={{marginTop: 10}}>
+        <Button
+          title="Submit"
+          onPress={onSubmitFormHandler}
+          disabled={isLoading}
+          buttonStyle={styles.styledButton2}
+          titleStyle={styles.buttontitle}
+        />
       </View>
     </ScrollView>
   );
@@ -148,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'center',
+    //justifyContent: 'center',
 
     //marginTop: Platform.OS==='ios' ? 0 : Constants.statusBarHeight
   },
@@ -203,5 +195,17 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     marginTop: -3,
+  },
+  view2: {
+    width: 50,
+    height: 50,
+    backgroundColor: colors.buttons,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 30,
+  },
+  view3: {
+    right: 150,
+    margin: 30,
   },
 });

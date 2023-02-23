@@ -59,12 +59,12 @@ export default function AuthSignin({navigation}) {
         navigation={navigation}
       />
 
-      <ScrollView>
+      
         <View style={{marginLeft: 20, marginTop: 30, marginBottom: 10}}>
           <Text style={title}>Sign In</Text>
         </View>
 
-        <View style={{alignItems: 'center', maginTop: 10, marginBottom: 30}}>
+        <View style={{alignItems: 'center', maginTop: 10, marginBottom: 10}}>
           <Text style={styles.text1}>Please enter the email and password</Text>
           <Text style={styles.text1}>register with your account</Text>
         </View>
@@ -142,7 +142,7 @@ export default function AuthSignin({navigation}) {
         </View>
 
         <View style={{alignItems: 'center', marginBottom: 10}}>
-          <Text style={{fontSize: 20, fontWeight: 'bold', color: '#000'}}>
+          <Text style={{fontSize: 20, fontWeight: 'bold',}}>
             OR
           </Text>
         </View>
@@ -185,7 +185,7 @@ export default function AuthSignin({navigation}) {
             }}
           />
         </View>
-      </ScrollView>
+      
     </View>
   );
 }
@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     backgroundColor: 'white',
     paddingHorizontal: 20,
+    height:50
   },
   createbuttontitle: {
     color: '#af7cf2',

@@ -156,6 +156,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     backgroundColor: 'white',
     paddingHorizontal: 20,
+    height:50
   },
   createbuttontitle: {
     color: '#af7cf2',

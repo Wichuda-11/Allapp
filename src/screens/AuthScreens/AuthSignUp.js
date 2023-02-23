@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
 
   view3: {marginTop: 5, marginBottom: 10},
 
-  text2: {fontSize: 15, color: colors.grey2},
+  text2: {fontSize: 15, color: colors.grey2, marginTop:10},
 
   view4: {
     flexDirection: 'row',
@@ -336,13 +336,13 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
 
-  text5: {fontSize: 15, fontWeight: 'bold'},
+  text5: {fontSize: 15, fontWeight: 'bold',marginBottom:10},
 
   view19: {backgroundColor: 'white', paddingHorizontal: 15},
 
   view20: {marginTop: 5},
 
-  view21: {marginTop: 5, alignItems: 'flex-end'},
+  view21: {marginTop: 5, alignItems: 'flex-end', marginBottom:10},
 
   button2: {
     backgroundColor: colors.background3,

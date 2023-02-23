@@ -249,13 +249,13 @@ export default function Home({navigation}) {
         <View style={styles.floatButton}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('RestaurantsMap');
+              navigation.navigate('BusinessConsole');
             }}>
             <FontAwesome
               name="map-marker"
               color={colors.buttons}
               size={32}
-              style={{left:5}}
+              style={{left:3}}
             />
             <Text style={{color: colors.grey2,}}>Map</Text>
           </TouchableOpacity>

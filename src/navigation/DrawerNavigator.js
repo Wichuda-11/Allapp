@@ -5,16 +5,15 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import RootClientTabs from './ClientTabs';
 import BusinessConsole from '../screens/BusinessConsole';
 import DrawerContent from '../components/DrawerContent';
+import PostRequest from '../screens/PostRequest';
+import PutRequest from '../screens/PutRequest';
+import DeleteRequest from '../screens/DeleteRequest';
 
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer(){
     return (
-      <Drawer.Navigator
-        drawerContent={props => <DrawerContent{...props} />}
-      >
-
-
+      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen
           name="RootClientTabs"
           component={RootClientTabs}
@@ -39,6 +38,51 @@ export default function MyDrawer(){
             drawerIcon: ({focussed, size}) => (
               <MaterialIcons
                 name="business"
+                color={focussed ? '#7cc' : colors.grey2}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Post Request"
+          component={PostRequest}
+          options={{
+            headerShown: false,
+            title: 'Post Request',
+            drawerIcon: ({focussed, size}) => (
+              <MaterialIcons
+                name="backup"
+                color={focussed ? '#7cc' : colors.grey2}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Put Request"
+          component={PutRequest}
+          options={{
+            headerShown: false,
+            title: 'Put Request',
+            drawerIcon: ({focussed, size}) => (
+              <MaterialIcons
+                name="cloud-done"
+                color={focussed ? '#7cc' : colors.grey2}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Delete Request"
+          component={DeleteRequest}
+          options={{
+            headerShown: false,
+            title: 'Delete Request',
+            drawerIcon: ({focussed, size}) => (
+              <MaterialIcons
+                name="dangerous"
                 color={focussed ? '#7cc' : colors.grey2}
                 size={size}
               />
