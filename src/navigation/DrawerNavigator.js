@@ -8,6 +8,7 @@ import DrawerContent from '../components/DrawerContent';
 import PostRequest from '../screens/PostRequest';
 import PutRequest from '../screens/PutRequest';
 import DeleteRequest from '../screens/DeleteRequest';
+import CameraQRcode from '../screens/CameraQRcode';
 
 const Drawer = createDrawerNavigator();
 
@@ -83,6 +84,21 @@ export default function MyDrawer(){
             drawerIcon: ({focussed, size}) => (
               <MaterialIcons
                 name="dangerous"
+                color={focussed ? '#7cc' : colors.grey2}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Camera QRcode"
+          component={CameraQRcode}
+          options={{
+            headerShown: false,
+            title: 'Camera QRcode',
+            drawerIcon: ({focussed, size}) => (
+              <MaterialIcons
+                name="camera"
                 color={focussed ? '#7cc' : colors.grey2}
                 size={size}
               />
